@@ -1,0 +1,1 @@
+mvn clean package -pl apm-sniffer/apm-sdk-plugin/jedis-shadow-plugin -am -Dmaven.test.skip
