@@ -1,0 +1,1 @@
+jedis-shadow-plugin=org.apache.skywalking.apm.plugin.jedis.shadow.define.JedisShadowInstrumentation
