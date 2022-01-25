@@ -30,4 +30,6 @@ public class Constants {
     public static final String DRIVER_CONNECT_INTERCEPTOR = "org.apache.skywalking.apm.plugin.jdbc.mysql.DriverConnectInterceptor";
 
     public static final StringTag SQL_PARAMETERS = new StringTag("db.sql.parameters");
+
+    public static final String CREATE_PREPARED_STATEMENT_SHADOW_INTERCEPTOR = "org.apache.skywalking.apm.plugin.jdbc.mysql.CreatePreparedStatementShadowInterceptor";
 }
