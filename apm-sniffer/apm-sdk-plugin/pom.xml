@@ -90,7 +90,7 @@
         <module>play-2.x-plugin</module>
         <module>lettuce-5.x-plugin</module>
         <module>avro-plugin</module>
-        <module>finagle-6.25.x-plugin</module>
+<!--        <module>finagle-6.25.x-plugin</module>-->
         <module>quasar-plugin</module>
         <module>mariadb-2.x-plugin</module>
         <module>influxdb-2.x-plugin</module>
@@ -117,6 +117,8 @@
         <module>okhttp-2.x-plugin</module>
         <module>pulsar-common</module>
         <module>pulsar-2.8.x-plugin</module>
+        <module>shadow-kafka-plugin</module>
+        <module>shadow-jedis-plugin</module>
     </modules>
     <packaging>pom</packaging>
 
