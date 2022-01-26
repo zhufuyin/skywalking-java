@@ -119,6 +119,7 @@
         <module>pulsar-2.8.x-plugin</module>
         <module>shadow-kafka-plugin</module>
         <module>shadow-jedis-plugin</module>
+        <module>shadow-mock-method</module>
     </modules>
     <packaging>pom</packaging>
 
