@@ -20,12 +20,13 @@ package org.apache.skywalking.apm.plugin.shadow.kafka.define;
 
 import net.bytebuddy.description.method.MethodDescription;
 import net.bytebuddy.matcher.ElementMatcher;
-import net.bytebuddy.matcher.ElementMatchers;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.ConstructorInterceptPoint;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.InstanceMethodsInterceptPoint;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.enhance.ClassInstanceMethodsEnhancePluginDefine;
 import org.apache.skywalking.apm.agent.core.plugin.match.ClassMatch;
-import org.apache.skywalking.apm.agent.core.plugin.match.NameMatch;
+
+import static net.bytebuddy.matcher.ElementMatchers.named;
+import static org.apache.skywalking.apm.agent.core.plugin.match.NameMatch.byName;
 
 public class KafkaProducerInstrumentation extends ClassInstanceMethodsEnhancePluginDefine {
 
@@ -36,7 +37,7 @@ public class KafkaProducerInstrumentation extends ClassInstanceMethodsEnhancePlu
 
     @Override
     protected ClassMatch enhanceClass() {
-        return NameMatch.byName(ENHANCE_CLASS);
+        return byName(ENHANCE_CLASS);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class KafkaProducerInstrumentation extends ClassInstanceMethodsEnhancePlu
                 new InstanceMethodsInterceptPoint() {
                     @Override
                     public ElementMatcher<MethodDescription> getMethodsMatcher() {
-                        return ElementMatchers.named(ENHANCE_METHOD);
+                        return named(ENHANCE_METHOD);
                     }
 
                     @Override
