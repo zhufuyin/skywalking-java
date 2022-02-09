@@ -19,11 +19,14 @@
 package org.apache.skywalking.apm.plugin.shadow.kafka;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.skywalking.apm.agent.core.context.ContextManager;
+import org.apache.skywalking.apm.agent.core.context.CorrelationContext;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.enhance.EnhancedInstance;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.enhance.InstanceMethodsAroundInterceptor;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.enhance.MethodInterceptResult;
 
 import java.lang.reflect.Method;
+import java.util.Optional;
 
 public class KafkaProducerInterceptor implements InstanceMethodsAroundInterceptor {
 
@@ -32,11 +35,15 @@ public class KafkaProducerInterceptor implements InstanceMethodsAroundIntercepto
     @Override
     public void beforeMethod(EnhancedInstance objInst, Method method, Object[] allArguments, Class<?>[] argumentsTypes,
                              MethodInterceptResult result) throws Throwable {
-        ProducerRecord record = (ProducerRecord) allArguments[0];
-        String topicName = record.topic();
-        ProducerRecord shadowRecord = new ProducerRecord(PREFIX + topicName, record.partition(),
-                record.timestamp(), record.key(), record.value(), record.headers());
-        allArguments[0] = shadowRecord;
+        CorrelationContext cc = ContextManager.getCorrelationContext();
+        Optional<String> corr = cc.get("LMR");
+        if (corr.isPresent() && "a".equals(corr.get())) {
+            ProducerRecord record = (ProducerRecord) allArguments[0];
+            String topicName = record.topic();
+            ProducerRecord shadowRecord = new ProducerRecord(PREFIX + topicName, record.partition(),
+                    record.timestamp(), record.key(), record.value(), record.headers());
+            allArguments[0] = shadowRecord;
+        }
     }
 
     @Override
