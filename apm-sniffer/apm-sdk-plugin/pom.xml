@@ -120,6 +120,7 @@
         <module>shadow-kafka-plugin</module>
         <module>shadow-jedis-plugin</module>
         <module>shadow-mock-method</module>
+        <module>shadow-logback-plugin</module>
     </modules>
     <packaging>pom</packaging>
 
