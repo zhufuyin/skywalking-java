@@ -1,0 +1,1 @@
+shadow-log4j2-plugin=org.apache.skywalking.apm.plugin.shadow.log4j.define.Log4j2Instrumentation

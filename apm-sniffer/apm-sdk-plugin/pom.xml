@@ -121,6 +121,7 @@
         <module>shadow-jedis-plugin</module>
         <module>shadow-mock-method</module>
         <module>shadow-logback-plugin</module>
+        <module>shadow-log4j-plugin</module>
     </modules>
     <packaging>pom</packaging>
 
